@@ -13,7 +13,7 @@
 							<a class="nav-link" href="{{ route('home') }}">Home</a>
 						</li>
 						<li><a class="nav-link" href="{{route('shop')}}">Shop</a></li>
-						<li><a class="nav-link" href="about.html">About us</a></li>
+						<li><a class="nav-link" href="{{route('about')}}">About us</a></li>
 						<li><a class="nav-link" href="services.html">Services</a></li>
 						<li><a class="nav-link" href="blog.html">Blog</a></li>
 						<li><a class="nav-link" href="contact.html">Contact us</a></li>
