@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -12,7 +13,6 @@ class ContactController extends Controller
     public function index()
     {
         return view('contact');
-        //
     }
 
     /**
@@ -28,7 +28,16 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'fname'   => 'required|string|max:100',
+            'lname'   => 'required|string|max:100',
+            'email'   => 'required|email|max:255',
+            'message' => 'required|string', // Fixed typo 'requred' -> 'required'
+        ]);
+
+        Contact::create($validated);
+
+        return redirect()->back()->with('success', 'Your message has been sent successfully!');
     }
 
     /**

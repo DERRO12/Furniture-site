@@ -16,3 +16,15 @@ Route::get('/services', [ServiceController::class, 'index'])->name('services');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+// Define the form submission route
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
